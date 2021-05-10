@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Legion1.Migrations
 {
     [DbContext(typeof(NumberContext))]
-    [Migration("20210416095704_InitSchema")]
-    partial class InitSchema
+    [Migration("20210510223429_AddDataAnnotation")]
+    partial class AddDataAnnotation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -27,17 +27,13 @@ namespace Legion1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Data")
-                        .HasMaxLength(200)
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Number")
-                        .HasMaxLength(200)
                         .HasColumnType("int");
 
                     b.Property<string>("Result")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 

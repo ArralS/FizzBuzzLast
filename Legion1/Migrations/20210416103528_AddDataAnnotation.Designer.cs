@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Legion1.Migrations
 {
     [DbContext(typeof(NumberContext))]
-    [Migration("20210510223342_InitSchema")]
-    partial class InitSchema
+    [Migration("20210416103528_AddDataAnnotation")]
+    partial class AddDataAnnotation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,13 +29,17 @@ namespace Legion1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Data")
+                        .HasMaxLength(200)
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Number")
+                        .HasMaxLength(200)
                         .HasColumnType("int");
 
                     b.Property<string>("Result")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("ID");
 

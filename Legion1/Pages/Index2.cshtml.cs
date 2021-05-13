@@ -21,8 +21,7 @@ namespace Legion1.Pages
         private NumberContext _context;
         [BindProperty]
         public int id { get; set; }
-        
-
+      
         public Index2Model(ILogger<IndexModel> logger, NumberContext context)
         {
             _logger = logger;
@@ -37,8 +36,13 @@ namespace Legion1.Pages
         }
         public IActionResult OnPost()
         {
+            var q = _context.Recent.Where(p => p.ID == id && p.Owner == User.Identity.Name); 
+            if(q!=null && q.Count() > 0)
+            {
             _context.Remove(new Recent() {ID=id});
             _context.SaveChanges();
+            }
+           
             return RedirectToPage();
         }
     }

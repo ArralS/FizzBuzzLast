@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Legion1.Models;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace Legion1.Models
 {
@@ -16,6 +16,8 @@ namespace Legion1.Models
         public int Number { get; set; }
        
         public DateTime Data { get; set; }
+
+        public String Owner { get; set; }
 
 
     }

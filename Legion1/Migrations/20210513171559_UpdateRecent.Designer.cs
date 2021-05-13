@@ -4,14 +4,16 @@ using Legion1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Legion1.Migrations
 {
     [DbContext(typeof(NumberContext))]
-    partial class NumberContextModelSnapshot : ModelSnapshot
+    [Migration("20210513171559_UpdateRecent")]
+    partial class UpdateRecent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,16 +31,18 @@ namespace Legion1.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("Number")
                         .HasColumnType("int");
-
-                    b.Property<string>("Owner")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Result")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("Recent");
                 });
@@ -241,6 +245,13 @@ namespace Legion1.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Legion1.Models.Recent", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

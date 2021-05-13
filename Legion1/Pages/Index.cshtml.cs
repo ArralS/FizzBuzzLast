@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Legion1.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace Legion1.Pages
 {
@@ -52,7 +54,7 @@ namespace Legion1.Pages
                 Name = GetResult(Address.Number);
                 HttpContext.Session.SetString("SessionAddress",
                 JsonConvert.SerializeObject(new Recent() { Number = Address.Number, Result = Name, Data = DateTime.Now }));
-                _context.Add(new Recent() { Number = Address.Number, Result = Name, Data = DateTime.Now });
+                _context.Add(new Recent() { Number = Address.Number, Result = Name, Data = DateTime.Now, Owner = User.Identity.Name });
                 _context.SaveChanges();
                 return Page();
             }

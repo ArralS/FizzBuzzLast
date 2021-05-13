@@ -6,7 +6,7 @@
     {
         foreach (var item in Model.Results)
         {
-        <p><span>@item.Number </span><span>@item.Result</span> <span>@item.Data</span> <span> </span> </p>
+        <p><span>@item.Number </span><span>@item.Result</span> <span>@item.Data</span> <span>@item.Owner </span> </p>
         <form method="post"><input type="hidden" value=@item.ID asp-for="id"><button class="btn btn-primary" type="submit">Zatwierdź</button>
         </form>
     }

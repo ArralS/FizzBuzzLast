@@ -9,9 +9,11 @@ using Legion1.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Legion1.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Legion1.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;

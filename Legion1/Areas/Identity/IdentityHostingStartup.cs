@@ -15,12 +15,12 @@ namespace Legion1.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<Legion1Context>(options =>
+                services.AddDbContext<NumberContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("Legion1ContextConnection")));
+                        context.Configuration.GetConnectionString("FBHistory")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<Legion1Context>();
+                    .AddEntityFrameworkStores<NumberContext>();
             });
         }
     }

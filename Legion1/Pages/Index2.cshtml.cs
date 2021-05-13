@@ -9,9 +9,11 @@ using Legion1.Models;
 using Microsoft.AspNetCore.Http;
 using Legion1.Data;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Legion1.Pages
 {
+    [Authorize]
     public class Index2Model : PageModel
     {
         
